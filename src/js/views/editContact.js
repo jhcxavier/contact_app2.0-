@@ -1,18 +1,24 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-export const AddContact = props => {
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [address, setAddress] = useState("");
-	const [phone, setPhone] = useState("");
-	const { actions } = useContext(Context);
+export const EditContact = props => {
+	// const feed = props.feed ? props.feed : null;
+	// console.log("props.feed", props.feed);
+	// const title = feed ? "Edit Feed" : "New Feed";
+	// const r = feed ? feed : {};
+	const { store, actions } = useContext(Context);
+	console.log("edittttt", store.contacts);
+	const [name, setName] = useState(store.contacts[props.match.params.index].full_name);
+	const [email, setEmail] = useState(store.contacts[props.match.params.index].email);
+	const [address, setAddress] = useState(store.contacts[props.match.params.index].address);
+	const [phone, setPhone] = useState(store.contacts[props.match.params.index].phone);
 	//const title = feed ? "Edit Contact" : "Add new Contact";
 	return (
 		<div className="container">
 			<div>
-				<h1 className="text-center mt-5">Add New Contact</h1>
+				<h1 className="text-center mt-5">Edit Contact</h1>
 				<form>
 					<div className="form-group">
 						<label>Full Name</label>
@@ -20,6 +26,7 @@ export const AddContact = props => {
 							type="text"
 							className="form-control"
 							placeholder="Full Name"
+							defaultValue={name}
 							onChange={e => setName(e.target.value)}
 						/>
 					</div>
@@ -29,6 +36,7 @@ export const AddContact = props => {
 							type="email"
 							className="form-control"
 							placeholder="Enter email"
+							defaultValue={email}
 							onChange={e => setEmail(e.target.value)}
 						/>
 					</div>
@@ -38,6 +46,7 @@ export const AddContact = props => {
 							type="phone"
 							className="form-control"
 							placeholder="Enter phone"
+							defaultValue={phone}
 							onChange={e => setPhone(e.target.value)}
 						/>
 					</div>
@@ -47,6 +56,7 @@ export const AddContact = props => {
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
+							defaultValue={address}
 							onChange={e => setAddress(e.target.value)}
 						/>
 					</div>
@@ -54,7 +64,7 @@ export const AddContact = props => {
 						<button
 							type="button"
 							className="btn btn-primary form-control"
-							onClick={() => actions.addContact(name, phone, email, address)}>
+							onClick={() => actions.editContact(props.match.params.id, name, phone, email, address)}>
 							save
 						</button>
 						or get back to contacts
@@ -63,4 +73,9 @@ export const AddContact = props => {
 			</div>
 		</div>
 	);
+};
+
+EditContact.propTypes = {
+	match: PropTypes.object,
+	feed: PropTypes.object
 };
