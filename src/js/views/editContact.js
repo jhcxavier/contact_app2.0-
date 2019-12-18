@@ -9,7 +9,6 @@ export const EditContact = props => {
 	// const title = feed ? "Edit Feed" : "New Feed";
 	// const r = feed ? feed : {};
 	const { store, actions } = useContext(Context);
-	console.log("edittttt", store.contacts);
 	const [name, setName] = useState(store.contacts[props.match.params.index].full_name);
 	const [email, setEmail] = useState(store.contacts[props.match.params.index].email);
 	const [address, setAddress] = useState(store.contacts[props.match.params.index].address);

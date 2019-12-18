@@ -7,12 +7,12 @@ import { Context } from "../store/appContext";
 export const ContactCard = props => {
 	const [state, setState] = useState({});
 	const { store, actions } = useContext(Context);
+	// console.log("delete", actions.deleteContact());
 
 	if (store.contacts == undefined || store.contacts == null) {
 		console.log(<h1>Loading...</h1>);
 	} else {
 		console.log("testeeee", store.contacts);
-
 		return (
 			<li className="list-group-item">
 				{store.contacts.map((e, index) => (
@@ -32,8 +32,8 @@ export const ContactCard = props => {
 									</button>
 								</Link>
 
-								<button className="btn" onClick={() => alert("test")}>
-									<i className="fas fa-trash-alt" />
+								<button className="btn">
+									<i className="fas fa-trash-alt" onClick={() => alert("teste")} />
 								</button>
 							</div>
 							<label className="name lead">{e.full_name}</label>
@@ -70,6 +70,7 @@ export const ContactCard = props => {
  * your component's properties
  //  **/
 ContactCard.propTypes = {
+	match: PropTypes.object,
 	history: PropTypes.object,
 	onDelete: PropTypes.func
 };
