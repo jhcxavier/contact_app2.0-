@@ -1,16 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import MikePhoto from "../../img/m101.jpg";
 import { Context } from "../store/appContext";
 
 export const ContactCard = props => {
-	const [state, setState] = useState({});
 	const { store, actions } = useContext(Context);
 	// console.log("delete", actions.deleteContact());
 
 	return (
-		<>
+		<div>
 			{store.contacts.map((e, index) => {
 				return (
 					<li key={index} className="list-group-item">
@@ -59,7 +58,7 @@ export const ContactCard = props => {
 					</li>
 				);
 			})}
-		</>
+		</div>
 	);
 };
 
