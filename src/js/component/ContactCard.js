@@ -9,60 +9,60 @@ export const ContactCard = props => {
 	const { store, actions } = useContext(Context);
 	// console.log("delete", actions.deleteContact());
 
-	if (store.contacts == undefined || store.contacts == null) {
-		console.log(<h1>Loading...</h1>);
-	} else {
-		console.log("testeeee", store.contacts);
-		return (
-			<li className="list-group-item">
-				{store.contacts.map((e, index) => (
-					<div key={index} className="row w-100">
-						<div className="col-12 col-sm-6 col-md-3 px-0">
-							<img
-								src={MikePhoto}
-								alt="Mike Anamendolla"
-								className="rounded-circle mx-auto d-block img-fluid"
-							/>
-						</div>
-						<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-							<div className=" float-right">
-								<Link to={"/edit/" + e.id + "/" + index}>
-									<button className="btn">
-										<i className="fas fa-pencil-alt mr-3" />
-									</button>
-								</Link>
-
-								<button className="btn">
-									<i className="fas fa-trash-alt" onClick={() => alert("teste")} />
-								</button>
+	return (
+		<>
+			{store.contacts.map((e, index) => {
+				return (
+					<li key={index} className="list-group-item">
+						<div className="row w-100">
+							<div className="col-12 col-sm-6 col-md-3 px-0">
+								<img
+									src={MikePhoto}
+									alt="Mike Anamendolla"
+									className="rounded-circle mx-auto d-block img-fluid"
+								/>
 							</div>
-							<label className="name lead">{e.full_name}</label>
-							<br />
-							<i className="fas fa-map-marker-alt text-muted mr-3" />
-							<span className="text-muted">{e.address}</span>
-							<br />
-							<span
-								className="fa fa-phone fa-fw text-muted mr-3"
-								data-toggle="tooltip"
-								title=""
-								data-original-title="(870) 288-4149"
-							/>
-							<span className="text-muted small">{e.phone}</span>
-							<br />
-							<span
-								className="fa fa-envelope fa-fw text-muted mr-3"
-								data-toggle="tooltip"
-								data-original-title=""
-								title=""
-							/>
-							<span className="text-muted small text-truncate">{e.email}</span>
+							<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+								<div className=" float-right">
+									<Link to={"/edit/" + e.id + "/" + index}>
+										<button className="btn">
+											<i className="fas fa-pencil-alt mr-3" />
+										</button>
+									</Link>
+
+									<button className="btn">
+										<i className="fas fa-trash-alt" onClick={() => actions.deleteContact(e.id)} />
+									</button>
+								</div>
+								<label className="name lead">{e.full_name}</label>
+								<br />
+								<i className="fas fa-map-marker-alt text-muted mr-3" />
+								<span className="text-muted">{e.address}</span>
+								<br />
+								<span
+									className="fa fa-phone fa-fw text-muted mr-3"
+									data-toggle="tooltip"
+									title=""
+									data-original-title="(870) 288-4149"
+								/>
+								<span className="text-muted small">{e.phone}</span>
+								<br />
+								<span
+									className="fa fa-envelope fa-fw text-muted mr-3"
+									data-toggle="tooltip"
+									data-original-title=""
+									title=""
+								/>
+								<span className="text-muted small text-truncate">{e.email}</span>
+							</div>
 						</div>
-					</div>
-				))}
-			</li>
-		);
-	}
+					</li>
+				);
+			})}
+		</>
+	);
 };
+
 // };
 
 /**
