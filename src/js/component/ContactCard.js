@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import MikePhoto from "../../img/m101.jpg";
 import { Context } from "../store/appContext";
+import Modale from "../component/modale";
 
 export const ContactCard = props => {
 	const { store, actions } = useContext(Context);
@@ -29,9 +30,10 @@ export const ContactCard = props => {
 										</button>
 									</Link>
 
-									<button className="btn">
+									{/* <button className="btn">
 										<i className="fas fa-trash-alt" onClick={() => actions.deleteContact(e.id)} />
-									</button>
+									</button> */}
+									<Modale />
 								</div>
 								<label className="name lead">{e.full_name}</label>
 								<br />
