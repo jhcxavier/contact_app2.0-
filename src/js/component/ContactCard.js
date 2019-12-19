@@ -33,7 +33,7 @@ export const ContactCard = props => {
 									{/* <button className="btn">
 										<i className="fas fa-trash-alt" onClick={() => actions.deleteContact(e.id)} />
 									</button> */}
-									<Modale />
+									<Modale id={e.id} />
 								</div>
 								<label className="name lead">{e.full_name}</label>
 								<br />

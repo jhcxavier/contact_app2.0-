@@ -2,8 +2,9 @@ import React, { useState, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-const Modale = () => {
+const Modale = props => {
 	const [show, setShow] = useState(false);
 	const { store, actions } = useContext(Context);
 	const handleClose = () => setShow(false);
@@ -25,7 +26,12 @@ const Modale = () => {
 						Close
 					</Button>
 
-					<Button variant="primary" onClick={() => actions.deleteContact(id)}>
+					<Button
+						variant="primary"
+						onClick={() => {
+							actions.deleteContact(props.id);
+							handleClose;
+						}}>
 						Delete
 					</Button>
 				</Modal.Footer>
@@ -35,3 +41,6 @@ const Modale = () => {
 };
 
 export default Modale;
+Modale.propTypes = {
+	id: PropTypes.string
+};
