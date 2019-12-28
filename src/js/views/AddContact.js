@@ -54,7 +54,14 @@ export const AddContact = props => {
 						<button
 							type="button"
 							className="btn btn-primary form-control"
-							onClick={() => actions.addContact(name, phone, email, address)}>
+							onClick={() => {
+								// let obj = {
+								// 	name:'name',
+								// 	phone:'9090909',
+								// 	email:'valid'
+								// }
+								actions.addContact(name, phone, email, address);
+							}}>
 							save
 						</button>
 						or get back to contacts

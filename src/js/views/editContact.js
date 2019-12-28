@@ -4,10 +4,6 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const EditContact = props => {
-	// const feed = props.feed ? props.feed : null;
-	// console.log("props.feed", props.feed);
-	// const title = feed ? "Edit Feed" : "New Feed";
-	// const r = feed ? feed : {};
 	const { store, actions } = useContext(Context);
 	const [name, setName] = useState(store.contacts[props.match.params.index].full_name);
 	const [email, setEmail] = useState(store.contacts[props.match.params.index].email);

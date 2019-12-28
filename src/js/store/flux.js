@@ -1,5 +1,6 @@
 const url = "https://assets.breatheco.de/apis/fake/contact/";
 const getState = ({ getStore, setStore, getActions }) => {
+	
 	return {
 		store: {
 			contacts: []
@@ -28,15 +29,7 @@ const getState = ({ getStore, setStore, getActions }) => {
 						agenda_slug: "downtown_xii"
 					})
 				}).then(() => {
-					fetch(url + "agenda/downtown_xii")
-						.then(response => response.json())
-						.then(result => {
-							console.log("result", result),
-								setStore({
-									contacts: result
-								});
-						})
-						.catch(e => console.error(e));
+					getActions().loadContact();
 				});
 			},
 			editContact(id, name, phone, email, address) {
@@ -51,19 +44,11 @@ const getState = ({ getStore, setStore, getActions }) => {
 						agenda_slug: "downtown_xii"
 					})
 				}).then(() => {
-					fetch(url + "agenda/downtown_xii")
-						.then(response => response.json())
-						.then(result => {
-							console.log("result", result),
-								setStore({
-									contacts: result
-								});
-						})
-						.catch(e => console.error(e));
+					getActions().loadContact();
 				});
 			},
 			deleteContact(id) {
-				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
+				fetch(url + id, {
 					method: "delete"
 				}).then(() => {
 					getActions().loadContact();
