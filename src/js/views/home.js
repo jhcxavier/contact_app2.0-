@@ -5,10 +5,12 @@ import "../../styles/home.scss";
 export const Home = () => {
 	return (
 		<div className="text-center mt-5">
-			<p>Login</p>
+			<p>Email</p>
 			<input />
 			<p>Password</p>
 			<input />
+			<br />
+			<button>Login</button>
 		</div>
 	);
 };

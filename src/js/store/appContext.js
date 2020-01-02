@@ -33,7 +33,6 @@ const injectContext = PassedComponent => {
 			state.actions.loadContact();
 		}, []);
 
-		
 		return (
 			<Context.Provider value={state}>
 				<PassedComponent {...props} />
