@@ -1,6 +1,5 @@
 const url = "https://assets.breatheco.de/apis/fake/contact/";
 const getState = ({ getStore, setStore, getActions }) => {
-	
 	return {
 		store: {
 			contacts: []
