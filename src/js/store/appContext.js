@@ -8,7 +8,6 @@ export const Context = React.createContext(null);
 
 const injectContext = PassedComponent => {
 	const StoreWrapper = props => {
-		
 		const [state, setState] = useState(
 			getState({
 				getStore: () => state.store,

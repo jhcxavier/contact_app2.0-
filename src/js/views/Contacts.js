@@ -12,6 +12,10 @@ export const Contacts = () => {
 	return (
 		<div className="container">
 			<div>
+				{/* <div className="title"> */}
+				<div className="d-flex justify-content-center">
+					<h1>Contact List</h1>
+				</div>
 				<p className="text-right my-3">
 					<Link className="btn btn-success" to="/add">
 						Add new contact
