@@ -1,15 +1,31 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+// import injectContext from "../store/appContext";
 import PropTypes from "prop-types";
 
-export const EditContact = props => {
+const EditContact = props => {
 	const { store, actions } = useContext(Context);
 	const [name, setName] = useState(store.contacts[props.match.params.index].full_name);
 	const [email, setEmail] = useState(store.contacts[props.match.params.index].email);
 	const [address, setAddress] = useState(store.contacts[props.match.params.index].address);
 	const [phone, setPhone] = useState(store.contacts[props.match.params.index].phone);
 	//const title = feed ? "Edit Contact" : "Add new Contact";
+
+	if (store.contacts == null || store.contacts == undefined || store.contacts.length == 0) {
+		actions.loadContact();
+		const [name, setName] = useState(store.contacts[props.match.params.index].full_name);
+		const [email, setEmail] = useState(store.contacts[props.match.params.index].email);
+		const [address, setAddress] = useState(store.contacts[props.match.params.index].address);
+		const [phone, setPhone] = useState(store.contacts[props.match.params.index].phone);
+		console.log("empty");
+	} else {
+		console.log("testeeee", store.contacts);
+		// const [name, setName] = useState(store.contacts[props.match.params.index].full_name);
+		// const [email, setEmail] = useState(store.contacts[props.match.params.index].email);
+		// const [address, setAddress] = useState(store.contacts[props.match.params.index].address);
+		// const [phone, setPhone] = useState(store.contacts[props.match.params.index].phone);
+	}
 	return (
 		<div className="container">
 			<div>
@@ -21,7 +37,7 @@ export const EditContact = props => {
 							type="text"
 							className="form-control"
 							placeholder="Full Name"
-							defaultValue={name}
+							value={name}
 							onChange={e => setName(e.target.value)}
 						/>
 					</div>
@@ -31,7 +47,7 @@ export const EditContact = props => {
 							type="email"
 							className="form-control"
 							placeholder="Enter email"
-							defaultValue={email}
+							value={email}
 							onChange={e => setEmail(e.target.value)}
 						/>
 					</div>
@@ -41,7 +57,7 @@ export const EditContact = props => {
 							type="phone"
 							className="form-control"
 							placeholder="Enter phone"
-							defaultValue={phone}
+							value={phone}
 							onChange={e => setPhone(e.target.value)}
 						/>
 					</div>
@@ -51,7 +67,7 @@ export const EditContact = props => {
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
-							defaultValue={address}
+							value={address}
 							onChange={e => setAddress(e.target.value)}
 						/>
 					</div>
@@ -74,3 +90,5 @@ EditContact.propTypes = {
 	match: PropTypes.object,
 	feed: PropTypes.object
 };
+// export default injectContext(EditContact);
+export default EditContact;
